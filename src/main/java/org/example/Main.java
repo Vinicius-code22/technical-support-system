@@ -1,42 +1,21 @@
 package org.example;
 
 
-import org.example.dao.AccessoryDAO;
-import org.example.dao.CustomerDAO;
-import org.example.dao.DatabaseInitializer;
-import org.example.dao.ServiceOrderDAO;
-import org.example.entity.Accessory;
-import org.example.entity.Customer;
-import org.example.entity.ServiceOrder;
-import org.example.entity.Status;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.example.ui.CustomerFormView;
 
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.List;
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        CustomerFormView customerFormView = new CustomerFormView();
+        Scene scene = new Scene(customerFormView.createScreen());
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
 
-public class Main{
-    public static void main(String[] args) throws SQLException {
-        DatabaseInitializer databaseInitializer = new DatabaseInitializer();
-        databaseInitializer.initializeDatabase();
-        Accessory accessory = new Accessory("Carregador", 10, "Fornecedor ", 60.00);
-
-        AccessoryDAO accessoryDAO = new AccessoryDAO();
-
-        accessoryDAO.save(accessory);
-
-        for (Accessory a: accessoryDAO.findAll()) {
-            System.out.println(a);
-        }
-
-        accessory.setUnitPrice(65.00);
-        accessory.setSupplier("Fornecedor Upgrade");
-
-        accessoryDAO.update(accessory);
-
-        accessoryDAO.delete(accessory.getId());
-
-        for (Accessory a: accessoryDAO.findAll()) {
-            System.out.println(a);
-        }
+    public static void main(String[] args) {
+        launch(args);
     }
 }
