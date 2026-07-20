@@ -65,5 +65,5 @@ src/main/java/org/example/
 
 ## 👤 Autor
 
-Vinicius Rodrigues — desenvolvedor Java em formação, focado em backend.
+Vinicius Viana — desenvolvedor Java em formação, focado em backend.
 [GitHub](https://github.com/Vinicius-code22)
